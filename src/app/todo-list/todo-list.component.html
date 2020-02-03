@@ -1,0 +1,31 @@
+<div>
+  <h1>Tienes # N elementos en la lista</h1>
+</div>
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)='save()'>
+    <input class="form-group"
+    id="textId"
+    type="text"
+    formControlName='todoText'
+    placeholder="Adiciona a la lista..."
+    required
+    minlength="3"
+    name="text" />
+    <button type="submit">Adicionar a la lista</button>
+    <button (click)="clearComplete()" type="button">Eliminar toda la lista</button>
+  </form>
+</div>
+<div *ngIf="items.length > 0">
+  <div *ngFor="let item of items; let i = index" class="individual">
+    <div class="list-items">
+      <div class="items">
+        <input type="checkbox" (change)="onChange(i, $event)" id="check1">
+        <label for="check1">
+          <div><i class="fa fa-check"></i></div> {{item.text || 'Add some thing'}}
+        </label>
+        <button (click)='clearItem(i)' type="button">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+</div>
